@@ -43,7 +43,7 @@ class App extends Component {
 
       var InfoWindow = new window.google.maps.InfoWindow({});
 
-      window.google.maps.event.addListener(InfoWindow, 'closeclick', function () {
+      window.google.maps.event.addListener(InfoWindow, 'closeclick', () => {
           this.closeInfoWindow();
       });
 
@@ -52,7 +52,7 @@ class App extends Component {
           infowindow: InfoWindow
       });
 
-      window.google.maps.event.addDomListener(window, "resize", function () {
+      window.google.maps.event.addDomListener(window, "resize", () => {
           var center = map.getCenter();
           window.google.maps.event.trigger(map, "resize");
           this.state.map.setCenter(center);
