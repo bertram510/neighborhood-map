@@ -33,8 +33,6 @@ class App extends Component {
    * Initialise the map once the google map script is loaded
    */
   initMap() {
-      var self = this;
-
       var mapview = document.getElementById('map');
       mapview.style.height = window.innerHeight + "px";
       var map = new window.google.maps.Map(mapview, {
@@ -46,7 +44,7 @@ class App extends Component {
       var InfoWindow = new window.google.maps.InfoWindow({});
 
       window.google.maps.event.addListener(InfoWindow, 'closeclick', function () {
-          self.closeInfoWindow();
+          this.closeInfoWindow();
       });
 
       this.setState({
@@ -57,7 +55,7 @@ class App extends Component {
       window.google.maps.event.addDomListener(window, "resize", function () {
           var center = map.getCenter();
           window.google.maps.event.trigger(map, "resize");
-          self.state.map.setCenter(center);
+          this.state.map.setCenter(center);
       });
 
       window.google.maps.event.addListener(map, 'click', () => {
