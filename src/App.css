@@ -1,32 +1,73 @@
-.App {
+
+.search {
+  z-index: 1;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
+.search-field {
+  padding: 5px;
+}
+
+ul {
+  background: white;
+  border: 1px solid darkgrey;
+  overflow: auto;
+  padding: 0px;
+  margin: 0;
+  max-height: 200px;
+  overflow: auto;
+}
+
+div.search {
+  width: 260px;
+}
+
+.box {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.box:hover {
+  background-color: #269abc;
+  color: rgb(83, 70, 70);
+}
+
+.button {
   text-align: center;
+  padding: 5px;
+  background-color: white;
+  border: 1px darkgrey solid;
+  cursor: pointer;
+  width: 260px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* ====================== Media Queries ====================== */
+@media screen and (min-width: 471px) {
+  .search-field {
+    width: 290px;
   }
-  to {
-    transform: rotate(360deg);
+
+  div.search {
+    width: 304px;
+  }
+
+  .button {
+    width: 304px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .search-field {
+    width: 246px;
+  }
+
+  div.search {
+    width: 260px;
+  }
+
+  .button {
+    width: 260px;
   }
 }
