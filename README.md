@@ -9,15 +9,10 @@ Built with: HTML, CSS, JavaScript, React and API usage.
 - A search box that you can show/hide to look for specific places from the list.
 
 ## Instructions for load the application:
-### Development Mode
+### How to run
 - Download or Clone the Repository.
 - Install all project dependencies with `npm install`
 - Start the server with `npm start`
-
-### Production Mode
-- To create a production build use `npm run build`
-- Navigate to the build directory and start the server with `npm run deploy`
-- This mode includes a Service Worker.
 
 ## Resources:
 - [Google Maps Platform Documentation](https://developers.google.com/maps/documentation/)
