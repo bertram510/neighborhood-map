@@ -13,6 +13,7 @@ Built with: HTML, CSS, JavaScript, React and API usage.
 - Download or Clone the Repository.
 - Install all project dependencies with `npm install`
 - Start the server with `npm start`
+- Use the following link to view the application: http://localhost:3000/
 
 ## Resources:
 - [Google Maps Platform Documentation](https://developers.google.com/maps/documentation/)
