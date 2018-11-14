@@ -151,10 +151,10 @@ class App extends Component {
 
   render() {
       return (
-          <div>
+          <div className="main">
+              <div id="map"></div>
               <LocationList key="1" locationList={this.state.locationList} openInfoWindow={this.openInfoWindow}
                             closeInfoWindow={this.closeInfoWindow}/>
-              <div id="map"></div>
           </div>
       );
   }

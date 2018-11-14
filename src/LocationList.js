@@ -6,12 +6,10 @@ class LocationList extends Component {
         super(props);
         this.state = {
             locations: '',
-            query: '',
-            suggestions: false,
+            query: ''
         };
 
         this.filterLocations = this.filterLocations.bind(this);
-        this.toggleSuggestions = this.toggleSuggestions.bind(this);
     }
 
     /**
@@ -42,15 +40,13 @@ class LocationList extends Component {
         });
     }
 
-    /**
-     * Show and hide suggestions
-     */
-    toggleSuggestions() {
-        this.setState({
-            locations: this.props.locationList,
-            suggestions: !this.state.suggestions
-        });
-    }
+    // componentWillReceiveProps(props) {
+    //     if (this.state.locations)  { return; }
+
+    //     this.setState({
+    //         locations: props.locationList
+    //     });
+    // }
 
     render() {
         var locationList = this.state.locations.map(function (locationData, index) {
@@ -64,9 +60,8 @@ class LocationList extends Component {
                 <input role="search" aria-labelledby="filter" id="search-field" className="search-field" type="text" placeholder="Search.."
                        value={this.state.query} onChange={this.filterLocations}/>
                 <ul>
-                    {this.state.suggestions && locationList}
+                    {locationList}
                 </ul>
-                <button className="button" onClick={this.toggleSuggestions}>Show/Hide Suggestions</button>
             </div>
         );
     }
