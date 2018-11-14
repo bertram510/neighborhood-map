@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import LocationList from './LocationList';
+import LocationFilter from './LocationFilter';
 import Axios from 'axios';
 
 class App extends Component {
@@ -11,8 +11,7 @@ class App extends Component {
             venues: [],
             locationList: [],
             map: '',
-            infowindow: '',
-            prevmarker: ''
+            infowindow: ''
         };
 
         this.initMap = this.initMap.bind(this);
@@ -104,6 +103,7 @@ class App extends Component {
                   // Get the first group of recommended list
                   venues: response.data.response.groups[0].items
               });
+              console.log(response.data.response.groups[0].items);
               this.renderMap();
               this.forceUpdate();
           })
@@ -117,12 +117,7 @@ class App extends Component {
   openInfoWindow(location) {
       this.closeInfoWindow();
       this.state.infowindow.open(this.state.map, location.marker);
-      location.marker.setAnimation(window.google.maps.Animation.BOUNCE);
-      this.setState({
-          currentMarker: location.marker
-      });
       this.state.map.setCenter(location.marker.getPosition());
-      this.state.map.panBy(0, -200);
       this.setInfoWindowContents(location.venueData);
   }
 
@@ -130,9 +125,9 @@ class App extends Component {
       const address = '<b>Address: </b>' + (location_data.location.formattedAddress ? location_data.location.formattedAddress.join(', ') : 'N/A') + '<br>';
       const checkinsCount = '<b>Number of CheckIn: </b>' + location_data.stats.checkinsCount + '<br>';
       const name = '<b>Name: </b>' + (location_data.name ? location_data.name : 'N/A') + '<br>';
-      const verifiedLocation = '<b>Verified Location: </b>' + (location_data.verified ? 'Yes' : 'No') + '<br>';
-      const readMore = '<a href="https://foursquare.com/v/'+ location_data.id +'" target="_blank">Read More on Foursquare Website</a>'
-      this.state.infowindow.setContent( name + verifiedLocation + address + checkinsCount + readMore);
+      const category = '<b>Category: </b>' + (location_data.categories[0].name ? location_data.categories[0].name : 'N/A') + '<br>';
+      const readMore = '<a href="https://foursquare.com/v/'+ location_data.id +'" target="_blank">View on Foursquare Website</a>'
+      this.state.infowindow.setContent( name + category + address + checkinsCount + readMore);
   }
 
   /**
@@ -140,12 +135,6 @@ class App extends Component {
    * @param {object} location marker
    */
   closeInfoWindow() {
-      if (this.state.currentMarker) {
-          this.state.currentMarker.setAnimation(null);
-      }
-      this.setState({
-          currentMarker: ''
-      });
       this.state.infowindow.close();
   }
 
@@ -153,7 +142,7 @@ class App extends Component {
       return (
           <div className="main">
               <div id="map"></div>
-              <LocationList key="1" locationList={this.state.locationList} openInfoWindow={this.openInfoWindow}
+              <LocationFilter key="1" locationList={this.state.locationList} openInfoWindow={this.openInfoWindow}
                             closeInfoWindow={this.closeInfoWindow}/>
           </div>
       );

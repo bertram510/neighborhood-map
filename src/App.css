@@ -1,24 +1,39 @@
-
-.search {
-  z-index: 1;
-  position: relative;
-}
-
 .search-field {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: 1px;
-  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+  width: 90%;
 }
 
 ul {
   background: white;
   border: 1px solid darkgrey;
+  max-height: 800px;
   overflow: auto;
   padding: 0px;
   margin: 0;
   overflow: auto;
+}
+
+ul li {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+ul li:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+ul li:nth-child(odd) {
+  background-color: #fff9c4ee;
 }
 
 div.main {
@@ -46,7 +61,7 @@ div.main {
 }
 
 /* ====================== Media Queries ====================== */
-@media screen and (min-width: 471px) {
+@media screen and (min-width: 501px) {
   div.search {
     width: 25%;
     height: 100%;
@@ -58,7 +73,7 @@ div.main {
   }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 500px) {
   div.search {
     width: 100%;
     height: 40%;
